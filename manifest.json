@@ -1,0 +1,85 @@
+{
+    "id": "wiki",
+    "name": "Wiki",
+    "authors": ["nivcoo", "KraftInk"],
+    "license": "MIT",
+    "description": "wiki::messages.package_description",
+    "market": {
+        "name": "wiki::market.name",
+        "author": {
+            "name": "nivcoo, KraftInk",
+            "url": "https://github.com/kraftink-cms"
+        },
+        "description": "wiki::market.description"
+    },
+    "type": "plugin",
+    "games": {
+        "supported": ["*"]
+    },
+    "version": "1.0.0",
+    "namespace": "KraftInk\\Plugins\\Wiki\\",
+    "provider": "KraftInk\\Plugins\\Wiki\\Providers\\PluginServiceProvider",
+    "privacy": "KraftInk\\Plugins\\Wiki\\Services\\Privacy",
+    "permissions": {
+        "wiki.view": {
+            "label": "wiki::messages.permission_view",
+            "default": {
+                "visitor": true,
+                "member": true
+            }
+        },
+        "wiki.manage": {
+            "label": "wiki::messages.admin_title",
+            "default": {
+                "mod": true,
+                "admin": true
+            }
+        },
+        "wiki.purge": {
+            "label": "wiki::messages.permission_purge",
+            "default": {
+                "admin": true
+            }
+        }
+    },
+    "navigation": {
+        "public": [
+            {
+                "label": "wiki::messages.common.wiki",
+                "permission": "wiki.view",
+                "route": "plugins.wiki.public.documents.index"
+            }
+        ],
+        "admin": [
+            {
+                "parent": "extensions",
+                "position": 500,
+                "label": "wiki::messages.common.wiki",
+                "permission": "wiki.manage",
+                "icon": "book",
+                "route": "plugins.wiki.admin.documents.index"
+            }
+        ],
+        "footer": []
+    },
+    "imports": {
+        "kraftink": ["wiki__"],
+        "azuriom": ["wiki_"],
+        "mineweb": ["wiki_"]
+    },
+    "requires": {
+        "php": "^8.4.1",
+        "cms": ">=0.0.1"
+    },
+    "configuration": {
+        "route": "plugins.wiki.admin.documents.index",
+        "permission": "wiki.manage"
+    },
+    "uninstall": {
+        "settings": ["wiki.", "secret.wiki."],
+        "storage": ["editor-images/wiki", "wiki/files"]
+    },
+    "assets": {
+        "scripts": ["editor.js", "navigation.js"]
+    }
+}
