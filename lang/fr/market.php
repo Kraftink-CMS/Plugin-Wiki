@@ -2,5 +2,5 @@
 
 return [
     'name' => 'Wiki',
-    'description' => 'Rassemblez les guides de votre serveur dans un wiki organisé en catégories, avec recherche et historique.',
+    'description' => 'Publiez les guides et règles de votre serveur dans un wiki avec recherche et historique.',
 ];

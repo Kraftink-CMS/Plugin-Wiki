@@ -5,6 +5,11 @@
     "license": "MIT",
     "description": "wiki::messages.package_description",
     "market": {
+        "readme": {
+            "en": "lang/en/market.md",
+            "fr": "lang/fr/market.md"
+        },
+        "icon": "book",
         "name": "wiki::market.name",
         "author": {
             "name": "nivcoo, KraftInk",
@@ -16,7 +21,7 @@
     "games": {
         "supported": ["*"]
     },
-    "version": "1.0.0",
+    "version": "1.0.1",
     "namespace": "KraftInk\\Plugins\\Wiki\\",
     "provider": "KraftInk\\Plugins\\Wiki\\Providers\\PluginServiceProvider",
     "privacy": "KraftInk\\Plugins\\Wiki\\Services\\Privacy",
