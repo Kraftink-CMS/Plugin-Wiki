@@ -375,7 +375,7 @@ class DocumentController
             'enabled' => 'sometimes|boolean',
             'read_access' => ['sometimes', Rule::in(['public', 'members', 'roles'])],
             'permission' => 'nullable|regex:/^[a-zA-Z0-9_.-]+$/D|max:100',
-            'icon' => 'sometimes|required|regex:/^[a-z][a-z0-9-]{0,59}$/D',
+            'icon' => ['sometimes', 'required', 'string', 'max:60', 'regex:/^[a-z0-9][a-z0-9-]*$/D'],
             'roles' => 'nullable|array|max:100',
             'roles.*' => 'required|integer|distinct|exists:roles,id',
             'roles_present' => 'sometimes|boolean',

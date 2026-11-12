@@ -58,7 +58,7 @@ final class Writer
             'enabled' => (bool) $category['enabled'],
             'read_access' => $category['read_access'],
             'permission' => $category['permission'],
-            'icon' => preg_match('/^[a-z][a-z0-9-]{0,59}$/D', $icon) ? $icon : 'book',
+            'icon' => preg_match('/^[a-z0-9][a-z0-9-]{0,59}$/D', $icon) ? $icon : 'book',
             'created_at' => $category['created_at'],
             'updated_at' => $category['updated_at'],
         ]);
