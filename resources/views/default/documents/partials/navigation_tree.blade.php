@@ -2,7 +2,12 @@
 @foreach ($nodes as $node)
     <details class="py-2" @if (in_array($node['category']->id, $navigation['expanded'], true)) open @endif>
         <summary class="fw-medium">
-            <x-content-icon :name="$node['category']->icon" class="me-1 text-body-secondary" />{{ $node['category']->name }}
+            @if (class_exists(\App\Kraft\ContentIcons::class))
+                <x-dynamic-component component="content-icon" :name="$node['category']->icon" class="me-1 text-body-secondary" />
+            @else
+                <i class="bi bi-{{ $node['category']->icon }} me-1 text-body-secondary" aria-hidden="true"></i>
+            @endif
+            {{ $node['category']->name }}
         </summary>
         <div class="ps-3 border-start ms-1">
             <a class="small d-block py-2" href="{{ route('plugins.wiki.public.documents.index', ['category' => $node['category']->id]) }}">{{ __('wiki::messages.common.view_category') }}</a>

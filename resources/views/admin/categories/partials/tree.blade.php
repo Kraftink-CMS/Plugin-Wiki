@@ -10,7 +10,11 @@
             <details @if (!$editable || $categoryOptions['search'] !== '') open @endif>
         @endif
             <{{ $labelTag }} @class(['text-break', 'ps-3' => !$hasChildren, 'pe-5' => $editable])>
-                <x-content-icon :name="$category->icon" class="me-1 text-body-secondary" />
+                @if (class_exists(\App\Kraft\ContentIcons::class))
+                    <x-dynamic-component component="content-icon" :name="$category->icon" class="me-1 text-body-secondary" />
+                @else
+                    <i class="bi bi-{{ $category->icon }} me-1 text-body-secondary" aria-hidden="true"></i>
+                @endif
                 <span @class(['fw-medium' => $editable, 'text-body-secondary' => !$editable])>{{ $category->name }}</span>
                 <span class="small text-body-secondary ms-1">{{ strtoupper($category->locale) }} · {{ __('wiki::messages.common.position') }} {{ $category->position }}</span>
                 @if (!$category->enabled)
