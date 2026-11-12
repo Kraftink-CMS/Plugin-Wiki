@@ -53,20 +53,8 @@
     </div>
 </div>
 <div class="mt-3">
-    @php
-        $selectedIcon = $categoryValue('icon', 'book');
-    @endphp
-    @if (class_exists(\App\Kraft\ContentIcons::class))
-        <x-dynamic-component component="admin::icon-picker" :id="$categoryModalId . '-icon'" name="icon"
-            :label="__('wiki::messages.files.icon')" :value="$selectedIcon" required />
-    @else
-        <label class="form-label" for="{{ $categoryModalId }}-icon">{{ __('wiki::messages.files.icon') }}</label>
-        <select class="form-select" id="{{ $categoryModalId }}-icon" name="icon">
-            @foreach (array_unique([is_string($selectedIcon) ? $selectedIcon : 'book', 'book', 'journal-text', 'info-circle', 'question-circle', 'shield-lock', 'file-earmark-text', 'map', 'tools', 'controller', 'people', 'star', 'gear']) as $icon)
-                <option value="{{ $icon }}" @selected($selectedIcon === $icon)>{{ $icon }}</option>
-            @endforeach
-        </select>
-    @endif
+    <x-admin::icon-picker :id="$categoryModalId . '-icon'" name="icon" :label="__('wiki::messages.files.icon')"
+        :value="$categoryValue('icon', 'book')" required />
 </div>
 <input type="hidden" name="enabled" value="0">
 <div class="form-check my-3">
